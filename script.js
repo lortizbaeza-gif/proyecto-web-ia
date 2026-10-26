@@ -188,3 +188,34 @@ $('next').addEventListener('click', () => { if (!loading && page < pages) { page
 $('retry').addEventListener('click', refresh);
 $('favorite-count').textContent = favorites.length;
 loadCharacters();
+
+// Reto adicional: cambiar las variables CSS sin alterar datos ni filtros.
+function initializeTheme() {
+  const key = 'portal-c137-theme';
+  const root = document.documentElement;
+  const toggle = makeText('button', 'theme-toggle', 'Modo claro');
+  toggle.type = 'button';
+  toggle.id = 'theme-toggle';
+  toggle.setAttribute('aria-label', 'Modo claro');
+  let light = false;
+  try { light = localStorage.getItem(key) === 'light'; } catch { /* Usar el tema predeterminado. */ }
+  const lightColors = { '--bg': '#f4f6ee', '--panel': '#e9eee1', '--card': '#ffffff', '--text': '#1a2b1c', '--muted': '#51634f', '--line': '#cad5c1', '--accent': '#3c651b', '--ink': '#ffffff', '--soft': '#dbe8cd' };
+  function applyTheme() {
+    Object.entries(lightColors).forEach(([property, value]) => {
+      if (light) root.style.setProperty(property, value);
+      else root.style.removeProperty(property);
+    });
+    root.style.colorScheme = light ? 'light' : 'dark';
+    toggle.textContent = light ? 'Modo oscuro' : 'Modo claro';
+    toggle.setAttribute('aria-pressed', String(light));
+    toggle.title = light ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro';
+  }
+  toggle.addEventListener('click', () => {
+    light = !light;
+    applyTheme();
+    try { localStorage.setItem(key, light ? 'light' : 'dark'); } catch { /* El cambio sigue funcionando sin persistencia. */ }
+  });
+  document.querySelector('.topbar').append(toggle);
+  applyTheme();
+}
+initializeTheme();
