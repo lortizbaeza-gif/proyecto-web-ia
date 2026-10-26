@@ -21,7 +21,7 @@ El código y la documentación se prepararon con asistencia de IA y se incorpora
 - Colección de favoritos que se guarda en localStorage.
 - Avisos de carga, consulta sin resultados, fallo de conexión y tiempo de espera; botón para reintentar.
 - Diseño adaptable a celulares y computadoras, etiquetas de formulario y navegación con teclado.
-- Reto adicional previsto en Issue #1: modo claro/oscuro mediante Pull Request, después de la primera versión.
+- Reto adicional: modo claro/oscuro con preferencia persistente, incorporado después de la primera versión mediante el [Pull Request #3](https://github.com/lortizbaeza-gif/proyecto-web-ia/pull/3), que resuelve la Issue #1.
 
 ## Instrucciones de uso
 
@@ -32,6 +32,7 @@ El código y la documentación se prepararon con asistencia de IA y se incorpora
 5. Pulsa el corazón de una tarjeta para guardar o quitar un favorito.
 6. Abre Favoritos para ver tu colección; puedes aplicar los mismos filtros.
 7. Pulsa Limpiar para restablecer los criterios.
+8. Usa Modo claro / Modo oscuro en la cabecera para cambiar la paleta.
 
 Los favoritos pertenecen a ese navegador y dispositivo; no se sincronizan con una cuenta. Si el almacenamiento está bloqueado se muestra una advertencia y se conservan en memoria durante la sesión. La consulta y las imágenes requieren conexión a internet.
 
@@ -76,7 +77,9 @@ Durante la edición automatizada, la selección del campo de código falló porq
 
 ### Modificación que el equipo debe explicar
 
-El control de consultas con AbortController permite cancelar solicitudes anteriores y verificar qué respuesta corresponde a la vista actual. Para explicarlo: cambiar filtros inicia una nueva consulta; la anterior se cancela; una respuesta antigua no puede sustituir la nueva. El reto de tema claro/oscuro se documentará al incorporarlo.
+El control de consultas con AbortController permite cancelar solicitudes anteriores y verificar qué respuesta corresponde a la vista actual. Para explicarlo: cambiar filtros inicia una nueva consulta; la anterior se cancela; una respuesta antigua no puede sustituir la nueva. 
+
+**Reto adicional incorporado:** initializeTheme() agrega un botón a la cabecera. Su evento click invierte una variable booleana y llama a applyTheme(), que cambia las variables CSS del elemento raíz y el esquema de color de los controles. Al volver al modo oscuro se retiran las propiedades en línea para recuperar los valores de style.css. La preferencia usa una clave de localStorage distinta de los favoritos. aria-pressed informa si el modo claro está activo. El estado se restaura al recargar si el almacenamiento está disponible.
 
 ### Reflexión propuesta para discutir y personalizar
 
@@ -90,6 +93,7 @@ Comprobaciones realizadas en la primera versión publicada:
 - Guardado de Rick Sanchez y visualización en Favoritos.
 - Persistencia del favorito después de recargar.
 - Búsqueda de un nombre inexistente: mensaje sin resultados y paginación deshabilitada.
+- Búsqueda Rick + estado Vivo + especie Humano: 22 resultados y navegación a la segunda página con 2 tarjetas, conservando filtros.
 
 Pendiente de validación del equipo: desconexión controlada, almacenamiento bloqueado, teléfonos reales y participación identificable de todos los integrantes. Consultar Issue #2. No confundir funciones implementadas con pruebas ejecutadas.
 
@@ -97,7 +101,7 @@ Pendiente de validación del equipo: desconexión controlada, almacenamiento blo
 
 Se creó un repositorio público llamado proyecto-web-ia. Los archivos se escribieron y modificaron desde la interfaz web de GitHub. GitHub Pages se configuró en Settings > Pages > Deploy from a branch > main > / (root) > Save. Los cambios posteriores en main vuelven a publicar el sitio.
 
-El historial separa estructura HTML, diseño CSS, lógica JavaScript, documentación y la mejora adicional. Las Issues #1 y #2 documentan mejoras y pendientes. El Pull Request de tema debe incorporarse para completar ese requisito.
+El historial separa estructura HTML, diseño CSS, lógica JavaScript, documentación y la mejora adicional. Las Issues #1 y #2 documentan mejoras y pendientes. El [Pull Request #3](https://github.com/lortizbaeza-gif/proyecto-web-ia/pull/3) se incorporó a main y cerró la Issue #1. El historial contiene al menos seis commits de avances reales; la colaboración de los demás integrantes continúa pendiente y se documenta en Issue #2.
 
 ## Guion breve para la exposición
 
