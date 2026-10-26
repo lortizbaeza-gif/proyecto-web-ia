@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explora personajes de Rick and Morty, filtra y guarda tus favoritos.">
+  <title>Portal C-137 | Rick and Morty</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#results">Saltar a los personajes</a>
+  <header class="topbar wrap">
+    <a class="brand" href="./"><span class="portal-icon" aria-hidden="true">◎</span> PORTAL <strong>C-137</strong></a>
+    <span class="tag">ARCHIVO DEL MULTIVERSO</span>
+  </header>
+  <main class="wrap">
+    <section class="hero" aria-labelledby="title">
+      <p class="eyebrow">RICK AND MORTY · EXPLORADOR DE PERSONAJES</p>
+      <h1 id="title">Un portal.<br><span>Infinitas historias.</span></h1>
+      <p class="intro">De la Tierra al último rincón del multiverso. Encuentra personajes, descubre de dónde vienen y guarda a tus favoritos.</p>
+      <div class="hero-note"><span class="dot"></span> Datos reales desde Rick and Morty API</div>
+      <div class="orbit" aria-hidden="true"><span>◎</span><small>C-137</small></div>
+    </section>
+    <section class="explorer" aria-label="Explorador">
+      <div class="section-head"><div><p class="eyebrow">ELIGE TU PRÓXIMO ENCUENTRO</p><h2>Explora el multiverso</h2></div><div class="tabs" aria-label="Vista de personajes"><button id="all-tab" class="active" aria-pressed="true">Todos</button><button id="favorites-tab" aria-pressed="false">Favoritos <span id="favorite-count">0</span></button></div></div>
+      <form id="search-form" class="filters" role="search">
+        <div class="search-field"><label for="search">Nombre del personaje</label><input id="search" type="search" placeholder="Busca a Rick, Morty, Summer…" autocomplete="off"></div>
+        <div><label for="status">Estado</label><select id="status"><option value="">Todos los estados</option><option value="alive">Vivo</option><option value="dead">Muerto</option><option value="unknown">Desconocido</option></select></div>
+        <div><label for="species">Especie</label><select id="species"><option value="">Todas las especies</option><option value="Human">Humano</option><option value="Alien">Alienígena</option><option value="Humanoid">Humanoide</option><option value="Robot">Robot</option><option value="Animal">Animal</option></select></div>
+        <button class="primary" type="submit">Buscar <span aria-hidden="true">↗</span></button><button class="reset" type="button" id="reset">Limpiar</button>
+      </form>
+      <div class="results-bar"><p id="summary" role="status" aria-live="polite">Abriendo el portal…</p><span class="micro">EXPLORA · DESCUBRE · GUARDA</span></div>
+      <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+      <button id="retry" class="primary" hidden>Reintentar consulta</button>
+      <div id="results" class="grid" aria-label="Personajes" aria-busy="true" tabindex="-1"></div>
+      <nav class="pagination" aria-label="Paginación"><button id="previous" disabled>← Anterior</button><span id="page-label">Página 1</span><button id="next" disabled>Siguiente →</button></nav>
+    </section>
+  </main>
+  <footer class="wrap"><span>PORTAL C-137 <small>Un proyecto para explorar y aprender.</small></span><a href="https://rickandmortyapi.com/documentation" target="_blank" rel="noopener noreferrer">Datos: Rick and Morty API ↗</a><p>Proyecto educativo no oficial. Personajes e imágenes pertenecen a sus respectivos titulares.</p></footer>
+</body>
+</html>
